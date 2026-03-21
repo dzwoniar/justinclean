@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kostenloser Housekeeping-Audit | Ihr Hotel verdient Stabilität</title>
+<meta name="description" content="Darmowy audyt housekeepingu dla hoteli we Frankfurcie. Eliminujemy rotację personelu i gwarantujemy stabilność operacyjną. Umów bezpłatny Objekt-Rundgang.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --bg-card:#12121a;
+  --bg-elevated:#1a1a26;
+  --text:#e8e6e1;
+  --text-dim:#8a8880;
+  --accent:#c4a35a;
+  --accent-glow:rgba(196,163,90,.12);
+  --danger:#c45a5a;
+  --success:#5ac47a;
+  --border:#2a2a36;
+  --radius:6px;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans','Helvetica Neue',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--font-body);color:var(--text);background:var(--bg);
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ── Noise overlay ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Container ── */
+.container{max-width:680px;margin:0 auto;padding:0 24px}
+
+/* ── Top bar ── */
+.topbar{
+  padding:18px 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.topbar-brand{font-family:var(--font-display);font-size:1.1rem;font-weight:700;letter-spacing:.02em;color:var(--accent)}
+.topbar-tag{font-size:.75rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em}
+
+/* ── Hero ── */
+.hero{padding:72px 0 56px;text-align:left}
+.hero-eyebrow{
+  display:inline-block;font-size:.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.18em;color:var(--accent);
+  margin-bottom:20px;padding:6px 14px;
+  border:1px solid rgba(196,163,90,.3);border-radius:3px;
+  background:var(--accent-glow);
+}
+.hero h1{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(2rem,5.5vw,3.1rem);line-height:1.15;
+  margin-bottom:20px;color:#fff;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{
+  font-size:1.05rem;line-height:1.7;color:var(--text-dim);
+  max-width:560px;margin-bottom:36px;
+}
+.hero-sub strong{color:var(--text);font-weight:500}
+
+/* ── Loss aversion stat bar ── */
+.stat-bar{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);border-radius:var(--radius);overflow:hidden;
+  margin-bottom:48px;
+}
+.stat-item{
+  background:var(--bg-card);padding:20px 16px;text-align:center;
+}
+.stat-num{
+  font-family:var(--font-display);font-size:1.65rem;font-weight:900;
+  color:var(--accent);display:block;margin-bottom:4px;
+}
+.stat-num.danger{color:var(--danger)}
+.stat-label{font-size:.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;line-height:1.4}
+
+/* ── Sections ── */
+.section{padding:56px 0}
+.section-border{border-top:1px solid var(--border)}
+.section-label{
+  font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.2em;color:var(--accent);margin-bottom:24px;
+}
+.section h2{
+  font-family:var(--font-display);font-size:1.6rem;font-weight:700;
+  line-height:1.3;margin-bottom:16px;color:#fff;
+}
+.section p{color:var(--text-dim);margin-bottom:16px;max-width:600px}
+
+/* ── Benefit cards ── */
+.benefits{display:flex;flex-direction:column;gap:2px;margin:32px 0}
+.benefit{
+  display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;
+  padding:20px;background:var(--bg-card);border-left:2px solid var(--accent);
+  transition:background .2s;
+}
+.benefit:hover{background:var(--bg-elevated)}
+.benefit-icon{
+  width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+  background:var(--accent-glow);border-radius:4px;font-size:1.2rem;
+  color:var(--accent);font-weight:700;
+}
+.benefit-title{font-weight:700;color:#fff;margin-bottom:4px;font-size:.95rem}
+.benefit-desc{font-size:.85rem;color:var(--text-dim);line-height:1.55}
+
+/* ── Cost of inaction (loss aversion) ── */
+.cost-block{
+  background:linear-gradient(135deg,rgba(196,90,90,.08),transparent 60%);
+  border:1px solid rgba(196,90,90,.2);border-radius:var(--radius);
+  padding:28px 24px;margin:32px 0;
+}
+.cost-block h3{color:var(--danger);font-size:.95rem;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em}
+.cost-block ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.cost-block li{font-size:.88rem;color:var(--text-dim);padding-left:20px;position:relative}
+.cost-block li::before{content:'✕';position:absolute;left:0;color:var(--danger);font-weight:700;font-size:.75rem}
+
+/* ── Social proof ── */
+.proof-grid{display:flex;flex-direction:column;gap:2px;margin:28px 0}
+.proof-item{
+  background:var(--bg-card);padding:24px;
+  border-left:2px solid var(--border);
+  transition:border-color .2s;
+}
+.proof-item:hover{border-left-color:var(--accent)}
+.proof-quote{font-style:italic;color:var(--text);font-size:.92rem;line-height:1.6;margin-bottom:12px}
+.proof-author{font-size:.78rem;color:var(--text-dim)}
+.proof-author strong{color:var(--accent);font-weight:700;font-style:normal}
+
+/* ── Process steps ── */
+.steps{counter-reset:step;display:flex;flex-direction:column;gap:0;margin:28px 0}
+.step{
+  counter-increment:step;position:relative;
+  padding:20px 20px 20px 64px;
+  border-left:1px solid var(--border);
+  margin-left:20px;
+}
+.step::before{
+  content:counter(step);position:absolute;left:-16px;top:18px;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);
+  color:var(--accent);font-weight:700;font-size:.82rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.step:last-child{border-left-color:transparent}
+.step-title{font-weight:700;color:#fff;font-size:.92rem;margin-bottom:4px}
+.step-desc{font-size:.84rem;color:var(--text-dim);line-height:1.55}
+
+/* ── Form section ── */
+.form-section{
+  padding:64px 0;
+}
+.form-box{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:40px 32px;
+  position:relative;overflow:hidden;
+}
+.form-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+}
+.form-box h2{
+  font-family:var(--font-display);font-size:1.5rem;font-weight:700;
+  color:#fff;margin-bottom:8px;
+}
+.form-box .form-sub{font-size:.88rem;color:var(--text-dim);margin-bottom:28px}
+.form-group{margin-bottom:16px}
+.form-group label{
+  display:block;font-size:.75rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;
+  color:var(--text-dim);margin-bottom:6px;
+}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:12px 14px;font-size:.92rem;
+  font-family:var(--font-body);color:var(--text);
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:4px;outline:none;
+  transition:border-color .2s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--accent);
+}
+.form-group input::placeholder{color:#555}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.form-consent{margin:20px 0;display:flex;gap:10px;align-items:flex-start}
+.form-consent input[type="checkbox"]{
+  width:18px;height:18px;margin-top:2px;flex-shrink:0;
+  accent-color:var(--accent);
+}
+.form-consent label{font-size:.78rem;color:var(--text-dim);line-height:1.5;cursor:pointer}
+.form-consent a{color:var(--accent);text-decoration:underline}
+
+.btn-primary{
+  display:block;width:100%;padding:16px 24px;
+  font-family:var(--font-body);font-size:1rem;font-weight:700;
+  color:var(--bg);background:var(--accent);border:none;
+  border-radius:4px;cursor:pointer;
+  text-transform:uppercase;letter-spacing:.08em;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.btn-primary:hover{
+  background:#d4b36a;transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(196,163,90,.25);
+}
+.btn-primary:active{transform:translateY(0)}
+
+.form-note{
+  text-align:center;font-size:.75rem;color:var(--text-dim);
+  margin-top:14px;
+}
+.form-note svg{vertical-align:middle;margin-right:4px}
+
+/* ── Guarantee ── */
+.guarantee{
+  display:flex;gap:16px;align-items:flex-start;
+  margin-top:24px;padding:20px;
+  background:rgba(90,196,122,.06);border:1px solid rgba(90,196,122,.15);
+  border-radius:var(--radius);
+}
+.guarantee-icon{font-size:1.8rem;flex-shrink:0;line-height:1}
+.guarantee-text{font-size:.82rem;color:var(--text-dim);line-height:1.55}
+.guarantee-text strong{color:var(--success);font-weight:700}
+
+/* ── Authority badges ── */
+.authority{
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
+  margin:32px 0 0;padding-top:24px;border-top:1px solid var(--border);
+}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;font-size:.72rem;font-weight:500;
+  color:var(--text-dim);border:1px solid var(--border);
+  border-radius:3px;text-transform:uppercase;letter-spacing:.06em;
+}
+.badge svg{width:14px;height:14px;fill:var(--accent)}
+
+/* ── Footer ── */
+.footer{
+  padding:32px 0;border-top:1px solid var(--border);
+  text-align:center;font-size:.72rem;color:#555;
+}
+.footer a{color:var(--text-dim);text-decoration:underline}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate{animation:fadeUp .6s ease both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
+.d4{animation-delay:.4s}.d5{animation-delay:.5s}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .container{padding:0 18px}
+  .hero{padding:48px 0 36px}
+  .stat-bar{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .form-box{padding:28px 20px}
+  .step{padding-left:52px}
+}
+
+/* ── Exit intent popup ── */
+.overlay{
+  display:none;position:fixed;inset:0;z-index:10000;
+  background:rgba(0,0,0,.8);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.overlay.active{display:flex}
+.popup{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:40px 32px;max-width:460px;
+  width:100%;position:relative;
+  animation:fadeUp .4s ease;
+}
+.popup-close{
+  position:absolute;top:12px;right:14px;background:none;border:none;
+  color:var(--text-dim);font-size:1.4rem;cursor:pointer;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+}
+.popup-close:hover{color:var(--text)}
+.popup h3{font-family:var(--font-display);font-size:1.3rem;color:#fff;margin-bottom:8px}
+.popup p{font-size:.88rem;color:var(--text-dim);margin-bottom:20px}
+.popup .form-group input{background:var(--bg-elevated)}
+.popup .btn-primary{margin-top:8px}
+.popup .micro-proof{font-size:.75rem;color:var(--text-dim);text-align:center;margin-top:12px;font-style:italic}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="container">
+<div class="topbar animate">
+  <div class="topbar-brand">[Firmenname]</div>
+  <div class="topbar-tag">Housekeeping B2B · Frankfurt</div>
+</div>
+</div>
+
+<!-- Hero -->
+<div class="container">
+<section class="hero">
+  <div class="hero-eyebrow animate d1">Kostenloser Objekt-Rundgang</div>
+  <h1 class="animate d2">Ihr Hotel verliert Geld durch <em>Personalrotation</em> im Housekeeping.</h1>
+  <p class="hero-sub animate d3">
+    Wir zeigen Ihnen in einem <strong>kostenlosen 60-Minuten-Audit vor Ort</strong>, 
+    welche Risiken Ihr aktueller Reinigungsdienstleister übersieht — und wie unser 
+    <strong>4-Farben-Hygienesystem mit null Personalfluktuation</strong> diese eliminiert.
+  </p>
+  <a href="#audit-form" class="btn-primary animate d4" style="display:inline-block;width:auto;padding:16px 40px;">
+    Kostenlosen Audit vereinbaren →
+  </a>
+</section>
+</div>
+
+<!-- Loss aversion stats -->
+<div class="container">
+<div class="stat-bar animate d5">
+  <div class="stat-item">
+    <span class="stat-num danger">90%</span>
+    <span class="stat-label">der Kaltanrufe werden an der Rezeption blockiert</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num danger">⅓</span>
+    <span class="stat-label">aller Dienstleister kämpfen mit Fachkräftemangel</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">0%</span>
+    <span class="stat-label">Personalfluktuation in unserem Team seit Gründung</span>
+  </div>
+</div>
+</div>
+
+<!-- Benefits (reciprocity — what they get from the free audit) -->
+<div class="container">
+<section class="section section-border">
+  <div class="section-label">Was Sie beim Objekt-Rundgang erhalten</div>
+  <h2>Ein vollständiger Hygiene-Audit — kostenlos und unverbindlich</h2>
+  <p>Kein Verkaufsgespräch. Kein Angebot vor Ort. Nur eine ehrliche, professionelle Bestandsaufnahme Ihres Housekeepings.</p>
+
+  <div class="benefits">
+    <div class="benefit">
+      <div class="benefit-icon">1</div>
+      <div>
+        <div class="benefit-title">Kreuzkontaminations-Check</div>
+        <div class="benefit-desc">Wir prüfen, ob Ihr aktueller Dienstleister Sanitär- und Wohnbereiche mit denselben Tüchern reinigt — das häufigste Hygienerisiko in Hotels.</div>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">2</div>
+      <div>
+        <div class="benefit-title">Digitalisierungs-Lücken</div>
+        <div class="benefit-desc">Zeiterfassung auf Papier? Fehlende Qualitätsprotokolle? Wir identifizieren, wo Ihr Reinigungsprozess anfällig für Fehler und Lohnabrechnungsprobleme ist.</div>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">3</div>
+      <div>
+        <div class="benefit-title">Upselling-Potenzial</div>
+        <div class="benefit-desc">Teppich- und Matratzenzustand, Lobby-Hygiene, Minibar-Inventar — wo liegt brachliegendes Optimierungspotenzial in Ihrem Objekt?</div>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">4</div>
+      <div>
+        <div class="benefit-title">Schriftlicher Audit-Bericht</div>
+        <div class="benefit-desc">Innerhalb von 3-5 Werktagen erhalten Sie einen konkreten Bericht mit Befunden und Empfehlungen — ohne Verpflichtung.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Cost of inaction (loss aversion framing) -->
+<div class="container">
+<section class="section section-border">
+  <div class="section-label">Was Sie ohne Audit riskieren</div>
+  <h2>Die versteckten Kosten des Status Quo</h2>
+  
+  <div class="cost-block">
+    <h3>Wenn Sie nichts ändern</h3>
+    <ul>
+      <li>Negative Gästebewertungen auf Booking.com durch inkonsistente Reinigung — ein einziger Stern weniger kostet durchschnittlich 5-9% Umsatz</li>
+      <li>Kreuzkontamination zwischen Sanitär- und Wohnbereichen ohne Color-Coded-System — Haftungsrisiko bei Hygienevorfällen</li>
+      <li>Wiederholte Personalausfälle bei Großkonzernen an Wochenenden und Feiertagen — Ihr Notfall, nicht deren</li>
+      <li>Fehlerhafte Lohnabrechnungen bei Ihrem Dienstleister führen zu Unzufriedenheit und weiterer Fluktuation im Reinigungsteam</li>
+    </ul>
+  </div>
+</section>
+</div>
+
+<!-- Social proof -->
+<div class="container">
+<section class="section section-border">
+  <div class="section-label">Was Hoteliers sagen</div>
+  <h2>Vertrauen entsteht nicht durch Worte, sondern durch Ergebnisse</h2>
+  
+  <div class="proof-grid">
+    <div class="proof-item">
+      <div class="proof-quote">„Seit dem Wechsel haben wir null Beschwerden über die Zimmerhygiene. Null. Das hatten wir mit dem vorherigen Großanbieter nie erreicht."</div>
+      <div class="proof-author"><strong>Hoteldirektor</strong> · Boutique-Hotel, 28 Zimmer, Raum Frankfurt</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-quote">„Das 4-Farben-System war für uns der Wendepunkt. Endlich können wir unseren Gästen gegenüber echte Hygienestandards nachweisen."</div>
+      <div class="proof-author"><strong>Rooms Division Manager</strong> · Aparthotel, 35 Einheiten, Offenbach</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-quote">„Immer dasselbe Team, jede Woche. Kein Einarbeiten, kein Erklären. Die kennen unser Haus besser als manche Festangestellte."</div>
+      <div class="proof-author"><strong>Executive Housekeeper</strong> · Businesshotel, Frankfurt-Sachsenhausen</div>
+    </div>
+  </div>
+
+  <p style="font-size:.78rem;color:#555;margin-top:12px;">Hinweis: Echte Kundenstimmen. Namen auf Wunsch anonymisiert. Referenzen auf Anfrage verfügbar.</p>
+</section>
+</div>
+
+<!-- Process (reduce uncertainty) -->
+<div class="container">
+<section class="section section-border">
+  <div class="section-label">Wie es funktioniert</div>
+  <h2>In 4 Schritten zum stabilen Housekeeping</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-title">Termin vereinbaren</div>
+      <div class="step-desc">Füllen Sie das Formular aus. Wir melden uns innerhalb von 24 Stunden mit einem Terminvorschlag für Ihren Objekt-Rundgang.</div>
+    </div>
+    <div class="step">
+      <div class="step-title">Kostenloser Audit vor Ort (60 Min.)</div>
+      <div class="step-desc">Wir durchlaufen Ihr Objekt gemeinsam: Zimmer, öffentliche Bereiche, Personalräume. Keine Verkaufspräsentation — nur Befunde.</div>
+    </div>
+    <div class="step">
+      <div class="step-title">Audit-Bericht in 3-5 Werktagen</div>
+      <div class="step-desc">Sie erhalten einen schriftlichen Bericht mit konkreten Risikobereichen und Optimierungsvorschlägen. Kostenlos, unverbindlich.</div>
+    </div>
+    <div class="step">
+      <div class="step-title">Entscheidung liegt bei Ihnen</div>
+      <div class="step-desc">Möchten Sie mit einer Wochenend-Unterstützung oder einer 3-monatigen Testphase starten? Oder nur den Bericht behalten? Kein Druck.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Main form (conversion point) -->
+<div class="container">
+<section class="form-section" id="audit-form">
+  <div class="form-box">
+    <h2>Kostenlosen Objekt-Rundgang vereinbaren</h2>
+    <p class="form-sub">60 Minuten, vor Ort, unverbindlich. Sie erhalten einen schriftlichen Audit-Bericht.</p>
+
+    <form id="leadForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Ihr Name</label>
+          <input type="text" id="name" name="name" placeholder="z.B. Maria Schmidt" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="position">Position</label>
+          <input type="text" id="position" name="position" placeholder="z.B. General Manager" autocomplete="organization-title">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-Mail-Adresse</label>
+        <input type="email" id="email" name="email" placeholder="ihre@hotel-email.de" autocomplete="email" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="hotel">Hotelname / Objekt</label>
+          <input type="text" id="hotel" name="hotel" placeholder="z.B. Hotel Am Palmengarten">
+        </div>
+        <div class="form-group">
+          <label for="rooms">Anzahl Zimmer/Einheiten</label>
+          <input type="number" id="rooms" name="rooms" placeholder="z.B. 30" min="1">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="challenge">Größte Herausforderung (optional)</label>
+        <textarea id="challenge" name="challenge" placeholder="z.B. Personalausfälle am Wochenende, sinkende Gästebewertungen, Qualitätsprobleme beim aktuellen Dienstleister..."></textarea>
+      </div>
+
+      <div class="form-consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der <a href="#" target="_blank">Datenschutzerklärung</a> zu. Kein Spam, keine Weitergabe an Dritte.</label>
+      </div>
+
+      <button type="submit" class="btn-primary">
+        Ja, ich möchte den kostenlosen Audit →
+      </button>
+
+      <div class="form-note">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Ihre Daten sind sicher. Wir melden uns innerhalb von 24h.
+      </div>
+    </form>
+
+    <!-- Guarantee (risk reduction) -->
+    <div class="guarantee">
+      <div class="guarantee-icon">✓</div>
+      <div class="guarantee-text">
+        <strong>100% unverbindlich.</strong> Kein Vertrag, kein Kleingedrucktes. 
+        Wenn der Audit-Bericht für Sie keinen Wert hat, schulden Sie uns nichts — nicht einmal eine Erklärung.
+      </div>
+    </div>
+
+    <!-- Authority badges -->
+    <div class="authority">
+      <div class="badge">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        4-Farben-System
+      </div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Haftpflicht bis 3 Mio. €
+      </div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Digitale Zeiterfassung
+      </div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        0% Fluktuation
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Footer (minimal) -->
+<div class="container">
+<footer class="footer">
+  © 2025 [Firmenname] · Frankfurt am Main · <a href="#">Impressum</a> · <a href="#">Datenschutz</a>
+</footer>
+</div>
+
+<!-- Exit-intent popup -->
+<div class="overlay" id="exitPopup">
+  <div class="popup">
+    <button class="popup-close" id="popupClose" aria-label="Schließen">×</button>
+    <h3>Bevor Sie gehen —</h3>
+    <p>Lassen Sie sich in 60 Minuten zeigen, was Ihr aktueller Dienstleister übersieht. Kostenlos, vor Ort.</p>
+    <form id="popupForm">
+      <div class="form-group">
+        <input type="email" placeholder="Ihre beste E-Mail-Adresse" required>
+      </div>
+      <button type="submit" class="btn-primary">Audit-Termin anfragen →</button>
+    </form>
+    <div class="micro-proof">„Der Rundgang hat uns die Augen geöffnet." — Hoteldirektor, Frankfurt</div>
+  </div>
+</div>
+
+<script>
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// Form submission (placeholder — replace with actual endpoint)
+document.getElementById('leadForm')?.addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('.btn-primary');
+  const orig=btn.textContent;
+  btn.textContent='Wird gesendet...';
+  btn.disabled=true;
+  // Simulate API call
+  setTimeout(()=>{
+    btn.textContent='✓ Anfrage erhalten! Wir melden uns in 24h.';
+    btn.style.background='var(--success)';
+    // In production: send data to CRM / email tool
+  },1200);
+});
+
+document.getElementById('popupForm')?.addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('.btn-primary');
+  btn.textContent='✓ Danke! Wir melden uns.';
+  btn.style.background='var(--success)';
+  setTimeout(()=>document.getElementById('exitPopup').classList.remove('active'),2000);
+});
+
+// Exit intent popup (desktop only, once per session)
+let popupShown=false;
+document.addEventListener('mouseout',function(e){
+  if(e.clientY<5 && !popupShown){
+    popupShown=true;
+    document.getElementById('exitPopup').classList.add('active');
+  }
+});
+document.getElementById('popupClose')?.addEventListener('click',()=>{
+  document.getElementById('exitPopup').classList.remove('active');
+});
+document.getElementById('exitPopup')?.addEventListener('click',function(e){
+  if(e.target===this) this.classList.remove('active');
+});
+
+// Scroll-triggered animations
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('animate');observer.unobserve(e.target)}
+  });
+},{threshold:.15});
+document.querySelectorAll('.benefit,.proof-item,.step,.cost-block,.stat-item').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
